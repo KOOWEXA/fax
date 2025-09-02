@@ -8,7 +8,156 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📄</text></svg>"/>
-  <style>:root{--bg-primary:#f4f7fa;--bg-secondary:#ffffff;--text-primary:#2c3e50;--text-secondary:#7f8c8d;--accent:#27ae60;--accent-hover:#219653;--border:#ddd;--shadow:0 4px 12px rgba(0,0,0,0.1);--header-height:60px;} .dark-mode{--bg-primary:#1a1a1a;--bg-secondary:#2d2d2d;--text-primary:#f0f0f0;--text-secondary:#b0b0b0;--border:#555;--shadow:0 4px 12px rgba(0,0,0,0.3);} *{box-sizing:border-box;margin:0;padding:0;} body{font-family:'Roboto',sans-serif;background-color:var(--bg-primary);color:var(--text-primary);line-height:1.6;transition:background-color 0.3s,color 0.3s;padding:20px;} .container{max-width:900px;margin:0 auto;background:var(--bg-secondary);padding:30px;border-radius:12px;box-shadow:var(--shadow);} header{display:flex;justify-content:space-between;align-items:center;padding-bottom:20px;border-bottom:1px solid var(--border);margin-bottom:30px;} h1{font-size:24px;color:var(--accent);display:flex;align-items:center;gap:10px;} h1 i{font-size:28px;} .theme-toggle{background:none;border:none;font-size:24px;cursor:pointer;color:var(--text-primary);} .card{background:var(--bg-primary);padding:20px;border-radius:10px;margin-bottom:20px;} .grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;} @media (max-width:768px){.grid{grid-template-columns:1fr;}} label{display:block;margin-bottom:6px;font-weight:500;color:var(--text-primary);} input,select{width:100%;padding:12px;margin-bottom:16px;border:1px solid var(--border);border-radius:6px;background:var(--bg-secondary);color:var(--text-primary);font-size:16px;} input:focus,select:focus{outline:2px solid var(--accent);border-color:var(--accent);} button{padding:12px 20px;background-color:var(--accent);color:white;border:none;border-radius:6px;font-size:16px;font-weight:500;cursor:pointer;transition:background 0.2s;margin-right:10px;margin-top:5px;} button:hover{background-color:var(--accent-hover);} button.secondary{background-color:#95a5a6;} button.secondary:hover{background-color:#7f8c8d;} .btn-group{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px;} .alert{padding:12px;background-color:#e74c3c;color:white;border-radius:6px;margin-bottom:20px;display:none;} .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}</style>
+  <style>
+    :root{
+      --bg-primary:#f4f7fa;
+      --bg-secondary:#ffffff;
+      --text-primary:#2c3e50;
+      --text-secondary:#7f8c8d;
+      --accent:#27ae60;
+      --accent-hover:#219653;
+      --border:#ddd;
+      --shadow:0 4px 12px rgba(0,0,0,0.1);
+      --header-height:60px;
+    }
+    .dark-mode{
+      --bg-primary:#1a1a1a;
+      --bg-secondary:#2d2d2d;
+      --text-primary:#f0f0f0;
+      --text-secondary:#b0b0b0;
+      --border:#555;
+      --shadow:0 4px 12px rgba(0,0,0,0.3);
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      transition: background-color 0.3s, color 0.3s;
+      padding: 20px;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--bg-secondary);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 30px;
+    }
+    h1 {
+      font-size: 24px;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    h1 i {
+      font-size: 28px;
+    }
+    .theme-toggle {
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: var(--text-primary);
+    }
+    .card {
+      background: var(--bg-primary);
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    @media (max-width: 768px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+    input, select {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 16px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+      font-size: 16px;
+    }
+    input:focus, select:focus {
+      outline: 2px solid var(--accent);
+      border-color: var(--accent);
+    }
+    button {
+      padding: 12px 20px;
+      background-color: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-right: 10px;
+      margin-top: 5px;
+    }
+    button:hover {
+      background-color: var(--accent-hover);
+    }
+    button.secondary {
+      background-color: #95a5a6;
+    }
+    button.secondary:hover {
+      background-color: #7f8c8d;
+    }
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .alert {
+      padding: 12px;
+      background-color: #e74c3c;
+      color: white;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      display: none;
+    }
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      white-space: nowrap;
+      border: 0;
+    }
+  </style>
 </head>
 <body>
 <div class="container" id="content">
@@ -17,24 +166,25 @@
     <button id="themeToggle" class="theme-toggle" aria-label="Activar tema oscuro"><i class="fas fa-moon"></i></button>
   </header>
   <div id="alert" class="alert" role="alert" aria-live="polite" aria-atomic="true"></div>
+
   <div class="card">
     <h2><i class="fas fa-building"></i> EMPRESA</h2>
     <div class="grid">
       <div>
         <label>ID de Empresa</label>
-        <input type="text" id="empresaId" readonly tabindex="-1"/>
+        <input type="text" id="empresaId" readonly />
       </div>
       <div>
         <label>Nombre</label>
-        <input type="text" value="KOOWEXA" readonly/>
+        <input type="text" value="KOOWEXA" readonly />
       </div>
       <div>
         <label>Monto (CUP)</label>
-        <input type="text" value="2000" readonly/>
+        <input type="text" value="2000" readonly />
       </div>
       <div>
         <label>Tiempo de Expiración</label>
-        <input type="text" value="3 meses" readonly/>
+        <input type="text" value="3 meses" readonly />
       </div>
       <div>
         <label>Servicio de Pago</label>
@@ -45,53 +195,220 @@
       </div>
       <div>
         <label>Número de Factura</label>
-        <input type="text" id="numFactura" readonly placeholder="Auto-generado"/>
+        <input type="text" id="numFactura" readonly placeholder="Auto-generado" />
       </div>
     </div>
   </div>
+
   <div class="card">
     <h2><i class="fas fa-user"></i> CLIENTE</h2>
     <div class="grid">
       <div>
         <label for="clienteNombre">Nombre *</label>
-        <input type="text" id="clienteNombre" placeholder="Nombre completo" required/>
+        <input type="text" id="clienteNombre" placeholder="Nombre completo" required />
       </div>
       <div>
         <label for="clienteCI">CI *</label>
-        <input type="text" id="clienteCI" placeholder="Cédula de Identidad" required/>
+        <input type="text" id="clienteCI" placeholder="Cédula de Identidad" required />
       </div>
       <div>
         <label for="clienteTelefono">Teléfono *</label>
-        <input type="tel" id="clienteTelefono" placeholder="+591 77778888" required/>
+        <input type="tel" id="clienteTelefono" placeholder="+591 77778888" required />
       </div>
       <div>
         <label for="clienteGmail">Correo *</label>
-        <input type="email" id="clienteGmail" placeholder="ejemplo@gmail.com" required/>
+        <input type="email" id="clienteGmail" placeholder="ejemplo@gmail.com" required />
       </div>
       <div>
         <label for="clienteUbicacion">Ubicación</label>
-        <input type="text" id="clienteUbicacion" placeholder="Ciudad, País"/>
+        <input type="text" id="clienteUbicacion" placeholder="Ciudad, País" />
       </div>
       <div>
         <label for="clienteFecha">Fecha de Emisión</label>
-        <input type="text" id="clienteFecha" readonly/>
+        <input type="text" id="clienteFecha" readonly />
       </div>
       <div>
         <label for="clienteVencimiento">Fecha de Vencimiento</label>
-        <input type="text" id="clienteVencimiento" readonly/>
+        <input type="text" id="clienteVencimiento" readonly />
       </div>
     </div>
   </div>
+
   <div class="btn-group">
-    <button onclick="generarFactura()"><i class="fas fa-file-pdf"></i> Generar PDF</button>
-    <button onclick="enviarPorEmail()"><i class="fas fa-envelope"></i> Enviar por Gmail</button>
+    <button onclick="enviarFacturaCompleta()"><i class="fas fa-envelope"></i> Enviar</button>
     <button onclick="limpiarFormulario()" class="secondary"><i class="fas fa-trash"></i> Limpiar</button>
-    <button onclick="guardarLocal()" class="secondary"><i class="fas fa-save"></i> Guardar Local</button>
   </div>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
 <script>
-const KoowexaFactura=(function(){const{jsPDF}=window.jspdf;const themeToggle=document.getElementById("themeToggle");const alertBox=document.getElementById("alert");const yearSpan=document.getElementById("year");function generarId(min=0,max=9999){return Math.floor(Math.random()*(max-min+1))+min;}function generarNumFactura(){const fecha=new Date();const dia=fecha.getDate().toString().padStart(2,'0');const mes=(fecha.getMonth()+1).toString().padStart(2,'0');const anio=fecha.getFullYear().toString().slice(-2);const rand=Math.floor(Math.random()*900+100);return`KWX-${anio}${mes}${dia}-${rand}`;}function formatearFecha(fecha){return fecha.toLocaleDateString('es-ES',{year:'numeric',month:'long',day:'numeric'});}function calcularVencimiento(){const hoy=new Date();hoy.setMonth(hoy.getMonth()+3);return hoy;}function validarCI(ci){return /^\d{6,}$/.test(ci.trim());}function validarCorreo(email){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);}function mostrarAlerta(mensaje,tipo="error"){alertBox.textContent=mensaje;alertBox.style.display="block";alertBox.style.backgroundColor=tipo==="error"?"#e74c3c":"#27ae60";setTimeout(()=>{alertBox.style.display="none";},5000);}function toggleTheme(){const html=document.getElementById("html-root");const icon=themeToggle.querySelector("i");const isDark=html.classList.contains("dark-mode");if(isDark){html.classList.remove("dark-mode");icon.className="fas fa-moon";themeToggle.setAttribute("aria-label","Activar tema oscuro");localStorage.setItem("theme","light");}else{html.classList.add("dark-mode");icon.className="fas fa-sun";themeToggle.setAttribute("aria-label","Desactivar tema oscuro");localStorage.setItem("theme","dark");}}function guardarLocal(){const cliente={nombre:document.getElementById("clienteNombre").value,ci:document.getElementById("clienteCI").value,tel:document.getElementById("clienteTelefono").value,gmail:document.getElementById("clienteGmail").value,ubicacion:document.getElementById("clienteUbicacion").value,fecha:new Date().toISOString()};try{const historial=JSON.parse(localStorage.getItem("facturas"))||[];historial.push(cliente);localStorage.setItem("facturas",JSON.stringify(historial));mostrarAlerta("✅ Datos guardados localmente.","success");}catch(e){mostrarAlerta("❌ No se pudo guardar en el navegador.");}}function limpiarFormulario(){document.querySelectorAll("input[type=text],input[type=email],input[type=tel]").forEach(inp=>{if(!inp.hasAttribute("readonly"))inp.value="";});document.getElementById("servicioPago").value="Sí";inicializarFormulario();}function inicializarFormulario(){document.getElementById("empresaId").value=generarId();document.getElementById("numFactura").value=generarNumFactura();const hoy=new Date();document.getElementById("clienteFecha").value=formatearFecha(hoy);document.getElementById("clienteVencimiento").value=formatearFecha(calcularVencimiento());if(localStorage.getItem("theme")==="dark"){document.getElementById("html-root").classList.add("dark-mode");themeToggle.querySelector("i").className="fas fa-sun";themeToggle.setAttribute("aria-label","Desactivar tema oscuro");}}let ultimoPDFBlob=null;async function generarFactura(){const nombre=document.getElementById("clienteNombre").value.trim();const ci=document.getElementById("clienteCI").value.trim();const telefono=document.getElementById("clienteTelefono").value.trim();const gmail=document.getElementById("clienteGmail").value.trim();if(!nombre||!ci||!telefono||!gmail){mostrarAlerta("⚠️ Todos los campos marcados con * son obligatorios.");return;}if(!validarCI(ci)){mostrarAlerta("⚠️ El CI debe tener al menos 6 dígitos numéricos.");return;}if(!validarCorreo(gmail)){mostrarAlerta("⚠️ Introduce un correo válido.");return;}try{const doc=new jsPDF({orientation:"portrait",unit:"mm",format:"a4"});doc.setFontSize(26).setTextColor(39,174,96).text("KOOWEXA",20,30);doc.setFontSize(12).setTextColor(100,100,100).text("Factura Electrónica",20,38);doc.setDrawColor(200,200,200).line(20,42,190,42);doc.setFontSize(11).setTextColor(50,50,50);doc.text(`ID Empresa: ${document.getElementById("empresaId").value}`,20,52);doc.text(`N° Factura: ${document.getElementById("numFactura").value}`,20,60);doc.text(`Monto: $2000 USD`,20,68);doc.text(`Servicio Pago: ${document.getElementById("servicioPago").value}`,20,76);doc.setFontSize(14).setTextColor(40,40,40).text("Datos del Cliente",20,90);doc.setFontSize(11).setTextColor(60,60,60);doc.text(`Nombre: ${nombre}`,20,100);doc.text(`CI: ${ci}`,20,108);doc.text(`Teléfono: ${telefono}`,20,116);doc.text(`Email: ${gmail}`,20,124);doc.text(`Ubicación: ${document.getElementById("clienteUbicacion").value||"No especificada"}`,20,132);doc.text(`Emisión: ${document.getElementById("clienteFecha").value}`,20,144);doc.text(`Vencimiento: ${document.getElementById("clienteVencimiento").value}`,20,152);doc.setFillColor(240,240,240);doc.setFontSize(80).setTextColor(220,220,220);doc.text("KOOWEXA",105,180,null,null,"center",true,0,0,0,0,0,0.5);const pageCount=doc.internal.getNumberOfPages();doc.setFontSize(10).setTextColor(100,100,100);doc.text(`Página ${pageCount}`,180,280);const blob=doc.output("blob");ultimoPDFBlob=URL.createObjectURL(blob);const nombreFactura=document.getElementById("numFactura").value;doc.save(`KOOWEXA-Factura-${nombreFactura}.pdf`);}catch(err){console.error("Error al generar PDF:",err);mostrarAlerta("❌ Error al generar el PDF. Intente nuevamente.");}}function enviarPorEmail(){const gmail=document.getElementById("clienteGmail").value.trim();if(!validarCorreo(gmail)){mostrarAlerta("⚠️ Primero ingresa un correo válido.");return;}if(!ultimoPDFBlob){mostrarAlerta("⚠️ Primero genera la factura.");return;}const asunto=encodeURIComponent("Tu factura de KOOWEXA");const body=encodeURIComponent(`Hola,\n\nAdjuntamos tu factura generada por KOOWEXA.\n\nGracias por tu confianza.\n\nKOOWEXA Team`);const mailtoLink=`https://mail.google.com/mail/?view=cm&fs=1&to=${gmail}&su=${asunto}&body=${body}`;window.open(mailtoLink,"_blank");}document.addEventListener("DOMContentLoaded",()=>{inicializarFormulario();themeToggle.addEventListener("click",toggleTheme);document.querySelectorAll("input,select").forEach(el=>{el.addEventListener("keypress",e=>{if(e.key==="Enter")generarFactura();});});});return{generarFactura,limpiarFormulario,guardarLocal,mostrarAlerta,enviarPorEmail};})();
+  const KoowexaFactura = (function () {
+    const themeToggle = document.getElementById("themeToggle");
+    const alertBox = document.getElementById("alert");
+
+    // Generar ID y número de factura
+    function generarId(min = 0, max = 9999) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function generarNumFactura() {
+      const fecha = new Date();
+      const dia = fecha.getDate().toString().padStart(2, '0');
+      const mes = (fecha.getMonth() + 1).toString().padStart(2, '0');
+      const anio = fecha.getFullYear().toString().slice(-2);
+      const rand = Math.floor(Math.random() * 900 + 100);
+      return `KWX-${anio}${mes}${dia}-${rand}`;
+    }
+
+    function formatearFecha(fecha) {
+      return fecha.toLocaleDateString('es-ES', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+    }
+
+    function calcularVencimiento() {
+      const hoy = new Date();
+      hoy.setMonth(hoy.getMonth() + 3);
+      return hoy;
+    }
+
+    function validarCI(ci) {
+      return /^\d{6,}$/.test(ci.trim());
+    }
+
+    function validarCorreo(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    function mostrarAlerta(mensaje, tipo = "error") {
+      alertBox.textContent = mensaje;
+      alertBox.style.display = "block";
+      alertBox.style.backgroundColor = tipo === "error" ? "#e74c3c" : "#27ae60";
+      setTimeout(() => {
+        alertBox.style.display = "none";
+      }, 5000);
+    }
+
+    function toggleTheme() {
+      const html = document.getElementById("html-root");
+      const icon = themeToggle.querySelector("i");
+      const isDark = html.classList.contains("dark-mode");
+      if (isDark) {
+        html.classList.remove("dark-mode");
+        icon.className = "fas fa-moon";
+        themeToggle.setAttribute("aria-label", "Activar tema oscuro");
+        localStorage.setItem("theme", "light");
+      } else {
+        html.classList.add("dark-mode");
+        icon.className = "fas fa-sun";
+        themeToggle.setAttribute("aria-label", "Desactivar tema oscuro");
+        localStorage.setItem("theme", "dark");
+      }
+    }
+
+    function limpiarFormulario() {
+      document.querySelectorAll("input[type=text], input[type=email], input[type=tel]").forEach(inp => {
+        if (!inp.hasAttribute("readonly")) inp.value = "";
+      });
+      document.getElementById("servicioPago").value = "Sí";
+      inicializarFormulario();
+    }
+
+    function inicializarFormulario() {
+      document.getElementById("empresaId").value = generarId();
+      document.getElementById("numFactura").value = generarNumFactura();
+      const hoy = new Date();
+      document.getElementById("clienteFecha").value = formatearFecha(hoy);
+      document.getElementById("clienteVencimiento").value = formatearFecha(calcularVencimiento());
+
+      // Aplicar tema guardado
+      if (localStorage.getItem("theme") === "dark") {
+        document.getElementById("html-root").classList.add("dark-mode");
+        themeToggle.querySelector("i").className = "fas fa-sun";
+        themeToggle.setAttribute("aria-label", "Desactivar tema oscuro");
+      }
+    }
+
+    function enviarFacturaCompleta() {
+      const nombre = document.getElementById("clienteNombre").value.trim();
+      const ci = document.getElementById("clienteCI").value.trim();
+      const telefono = document.getElementById("clienteTelefono").value.trim();
+      const gmail = document.getElementById("clienteGmail").value.trim();
+      const ubicacion = document.getElementById("clienteUbicacion").value.trim() || "No especificada";
+
+      if (!nombre || !ci || !telefono || !gmail) {
+        mostrarAlerta("⚠️ Todos los campos marcados con * son obligatorios.");
+        return;
+      }
+      if (!validarCI(ci)) {
+        mostrarAlerta("⚠️ El CI debe tener al menos 6 dígitos numéricos.");
+        return;
+      }
+      if (!validarCorreo(gmail)) {
+        mostrarAlerta("⚠️ Introduce un correo válido.");
+        return;
+      }
+
+      // Datos de la factura
+      const datos = {
+        empresaId: document.getElementById("empresaId").value,
+        numFactura: document.getElementById("numFactura").value,
+        monto: "2000 CUP",
+        servicioPago: document.getElementById("servicioPago").value,
+        nombre,
+        ci,
+        telefono,
+        gmail,
+        ubicacion,
+        fecha: document.getElementById("clienteFecha").value,
+        vencimiento: document.getElementById("clienteVencimiento").value
+      };
+
+      // Formatear cuerpo del correo
+      const cuerpo = `
+Hola ${datos.nombre},
+
+Aquí tienes los detalles de tu factura emitida por **KOOWEXA**:
+
+📄 **FACTURA ELECTRÓNICA**
+------------------------------
+🔹 Número de Factura: ${datos.numFactura}
+🔹 ID de Empresa: ${datos.empresaId}
+🔹 Fecha de Emisión: ${datos.fecha}
+🔹 Fecha de Vencimiento: ${datos.vencimiento}
+🔹 Monto: ${datos.monto}
+🔹 Servicio de Pago: ${datos.servicioPago}
+
+👤 **Datos del Cliente**
+------------------------------
+🔹 Nombre: ${datos.nombre}
+🔹 CI: ${datos.ci}
+🔹 Teléfono: ${datos.telefono}
+🔹 Correo: ${datos.gmail}
+🔹 Ubicación: ${datos.ubicacion}
+
+Gracias por confiar en KOOWEXA. No dudes en contactarnos si tienes alguna pregunta.
+
+Saludos cordiales,
+Equipo KOOWEXA
+      `.trim();
+
+      const asunto = encodeURIComponent("Tu factura de KOOWEXA");
+      const body = encodeURIComponent(cuerpo);
+      const mailtoLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(datos.gmail)}&su=${asunto}&body=${body}`;
+
+      window.open(mailtoLink, "_blank");
+    }
+
+    // Inicializar al cargar
+    document.addEventListener("DOMContentLoaded", () => {
+      inicializarFormulario();
+      themeToggle.addEventListener("click", toggleTheme);
+    });
+
+    return { enviarFacturaCompleta, limpiarFormulario, mostrarAlerta };
+  })();
 </script>
 </body>
 </html>
