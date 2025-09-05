@@ -1,414 +1,134 @@
 <!DOCTYPE html>
 <html lang="es" id="html-root">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>KOOWEXA - FAX</title>
-  <meta name="description" content="facturación electrónica"/>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📄</text></svg>"/>
-  <style>
-    :root{
-      --bg-primary:#f4f7fa;
-      --bg-secondary:#ffffff;
-      --text-primary:#2c3e50;
-      --text-secondary:#7f8c8d;
-      --accent:#27ae60;
-      --accent-hover:#219653;
-      --border:#ddd;
-      --shadow:0 4px 12px rgba(0,0,0,0.1);
-      --header-height:60px;
-    }
-    .dark-mode{
-      --bg-primary:#1a1a1a;
-      --bg-secondary:#2d2d2d;
-      --text-primary:#f0f0f0;
-      --text-secondary:#b0b0b0;
-      --border:#555;
-      --shadow:0 4px 12px rgba(0,0,0,0.3);
-    }
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      font-family: 'Roboto', sans-serif;
-      background-color: var(--bg-primary);
-      color: var(--text-primary);
-      line-height: 1.6;
-      transition: background-color 0.3s, color 0.3s;
-      padding: 20px;
-    }
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      background: var(--bg-secondary);
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: var(--shadow);
-    }
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-bottom: 20px;
-      border-bottom: 1px solid var(--border);
-      margin-bottom: 30px;
-    }
-    h1 {
-      font-size: 24px;
-      color: var(--accent);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    h1 i {
-      font-size: 28px;
-    }
-    .theme-toggle {
-      background: none;
-      border: none;
-      font-size: 24px;
-      cursor: pointer;
-      color: var(--text-primary);
-    }
-    .card {
-      background: var(--bg-primary);
-      padding: 20px;
-      border-radius: 10px;
-      margin-bottom: 20px;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-    @media (max-width: 768px) {
-      .grid {
-        grid-template-columns: 1fr;
-      }
-    }
-    label {
-      display: block;
-      margin-bottom: 6px;
-      font-weight: 500;
-      color: var(--text-primary);
-    }
-    input, select {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 16px;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      background: var(--bg-secondary);
-      color: var(--text-primary);
-      font-size: 16px;
-    }
-    input:focus, select:focus {
-      outline: 2px solid var(--accent);
-      border-color: var(--accent);
-    }
-    button {
-      padding: 12px 20px;
-      background-color: var(--accent);
-      color: white;
-      border: none;
-      border-radius: 6px;
-      font-size: 16px;
-      font-weight: 500;
-      cursor: pointer;
-      transition: background 0.2s;
-      margin-right: 10px;
-      margin-top: 5px;
-    }
-    button:hover {
-      background-color: var(--accent-hover);
-    }
-    button.secondary {
-      background-color: #95a5a6;
-    }
-    button.secondary:hover {
-      background-color: #7f8c8d;
-    }
-    .btn-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 20px;
-    }
-    .alert {
-      padding: 12px;
-      background-color: #e74c3c;
-      color: white;
-      border-radius: 6px;
-      margin-bottom: 20px;
-      display: none;
-    }
-    .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0,0,0,0);
-      white-space: nowrap;
-      border: 0;
-    }
-  </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>KOOWEXA - FAX</title>
+<meta name="description" content="facturación electrónica"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📄</text></svg>"/>
+<style>
+:root{--bg-primary:#f4f7fa;--bg-secondary:#ffffff;--text-primary:#2c3e50;--text-secondary:#7f8c8d;--accent:#27ae60;--accent-hover:#219653;--border:#ddd;--shadow:0 4px 12px rgba(0,0,0,0.1);--header-height:60px;}
+.dark-mode{--bg-primary:#1a1a1a;--bg-secondary:#2d2d2d;--text-primary:#f0f0f0;--text-secondary:#b0b0b0;--border:#555;--shadow:0 4px 12px rgba(0,0,0,0.3);}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Roboto',sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.6;transition:background .3s,color .3s;padding:20px;}
+.container{max-width:900px;margin:0 auto;background:var(--bg-secondary);padding:30px;border-radius:12px;box-shadow:var(--shadow);}
+header{display:flex;justify-content:space-between;align-items:center;padding-bottom:20px;border-bottom:1px solid var(--border);margin-bottom:30px;}
+h1{font-size:24px;color:var(--accent);display:flex;align-items:center;gap:10px;}
+h1 i{font-size:28px;}
+.theme-toggle{background:none;border:none;font-size:24px;cursor:pointer;color:var(--text-primary);}
+.card{background:var(--bg-primary);padding:20px;border-radius:10px;margin-bottom:20px;}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+@media(max-width:768px){.grid{grid-template-columns:1fr;}}
+label{display:block;margin-bottom:6px;font-weight:500;color:var(--text-primary);}
+input,select{width:100%;padding:12px;margin-bottom:16px;border:1px solid var(--border);border-radius:6px;background:var(--bg-secondary);color:var(--text-primary);font-size:16px;}
+input:focus,select:focus{outline:2px solid var(--accent);border-color:var(--accent);}
+button{padding:12px 20px;background:var(--accent);color:white;border:none;border-radius:6px;font-size:16px;font-weight:500;cursor:pointer;transition:background .2s;margin-right:10px;margin-top:5px;}
+button:hover{background:var(--accent-hover);}
+button.secondary{background:#95a5a6;}
+button.secondary:hover{background:#7f8c8d;}
+.btn-group{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px;}
+.alert{padding:12px;background:#e74c3c;color:white;border-radius:6px;margin-bottom:20px;display:none;}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+</style>
 </head>
 <body>
 <div class="container" id="content">
-  <header>
-    <h1><i class="fas fa-file-invoice"></i> KOOWEXA - FAX</h1>
-    <button id="themeToggle" class="theme-toggle" aria-label="Activar tema oscuro"><i class="fas fa-moon"></i></button>
-  </header>
-  <div id="alert" class="alert" role="alert" aria-live="polite" aria-atomic="true"></div>
+<header>
+<h1><i class="fas fa-file-invoice"></i> KOOWEXA - FAX</h1>
+<button id="themeToggle" class="theme-toggle" aria-label="Activar tema oscuro"><i class="fas fa-moon"></i></button>
+</header>
+<div id="alert" class="alert" role="alert" aria-live="polite" aria-atomic="true"></div>
 
-  <div class="card">
-    <h2><i class="fas fa-building"></i> EMPRESA</h2>
-    <div class="grid">
-      <div>
-        <label>ID de Empresa</label>
-        <input type="text" id="empresaId" readonly />
-      </div>
-      <div>
-        <label>Nombre</label>
-        <input type="text" value="KOOWEXA" readonly />
-      </div>
-      <div>
-        <label>Monto (CUP)</label>
-        <input type="text" value="2000" readonly />
-      </div>
-      <div>
-        <label>Tiempo de Expiración</label>
-        <input type="text" value="3 meses" readonly />
-      </div>
-      <div>
-        <label>Servicio de Pago</label>
-        <select id="servicioPago">
-          <option value="Sí">Sí</option>
-          <option value="No">No</option>
-        </select>
-      </div>
-      <div>
-        <label>Número de Factura</label>
-        <input type="text" id="numFactura" readonly placeholder="Auto-generado" />
-      </div>
-    </div>
-  </div>
+<div class="card">
+<h2><i class="fas fa-building"></i> EMPRESA</h2>
+<div class="grid">
+<div><label>ID de Empresa</label><input type="text" id="empresaId" readonly/></div>
+<div><label>Nombre</label><input type="text" value="KOOWEXA" readonly/></div>
+<div><label>Monto Base (CUP)</label><input type="text" id="montoBase" value="2000" readonly/></div>
+<div><label>Aplicar Descuento 10%</label><select id="aplicarDescuento"><option value="no">No</option><option value="si">Sí</option></select></div>
+<div><label>Monto Final (CUP)</label><input type="text" id="montoFinal" readonly/></div>
+<div><label>Tiempo de Expiración</label><input type="text" value="3 meses" readonly/></div>
+<div><label>Servicio de Pago</label><select id="servicioPago"><option value="Sí">Sí</option><option value="No">No</option></select></div>
+<div><label>Número de Factura</label><input type="text" id="numFactura" readonly placeholder="Auto-generado"/></div>
+<div><label>Firma Única</label><input type="text" id="firmaUnica" readonly/></div>
+</div>
+</div>
 
-  <div class="card">
-    <h2><i class="fas fa-user"></i> CLIENTE</h2>
-    <div class="grid">
-      <div>
-        <label for="clienteNombre">Nombre *</label>
-        <input type="text" id="clienteNombre" placeholder="Nombre completo" required />
-      </div>
-      <div>
-        <label for="clienteCI">CI *</label>
-        <input type="text" id="clienteCI" placeholder="Cédula de Identidad" required />
-      </div>
-      <div>
-        <label for="clienteTelefono">Teléfono *</label>
-        <input type="tel" id="clienteTelefono" placeholder="+591 77778888" required />
-      </div>
-      <div>
-        <label for="clienteGmail">Correo *</label>
-        <input type="email" id="clienteGmail" placeholder="ejemplo@gmail.com" required />
-      </div>
-      <div>
-        <label for="clienteUbicacion">Ubicación</label>
-        <input type="text" id="clienteUbicacion" placeholder="Ciudad, País" />
-      </div>
-      <div>
-        <label for="clienteFecha">Fecha de Emisión</label>
-        <input type="text" id="clienteFecha" readonly />
-      </div>
-      <div>
-        <label for="clienteVencimiento">Fecha de Vencimiento</label>
-        <input type="text" id="clienteVencimiento" readonly />
-      </div>
-    </div>
-  </div>
+<div class="card">
+<h2><i class="fas fa-user"></i> CLIENTE</h2>
+<div class="grid">
+<div><label for="clienteNombre">Nombre *</label><input type="text" id="clienteNombre" placeholder="Nombre completo" required autocomplete="name"/></div>
+<div><label for="clienteCI">CI *</label><input type="text" id="clienteCI" placeholder="Cédula de Identidad" required/></div>
+<div><label for="clienteTelefono">Teléfono *</label><input type="tel" id="clienteTelefono" placeholder="+591 77778888" required autocomplete="tel"/></div>
+<div><label for="clienteGmail">Correo *</label><input type="email" id="clienteGmail" placeholder="ejemplo@gmail.com" required autocomplete="email"/></div>
+<div><label for="clienteUbicacion">Ubicación</label><input type="text" id="clienteUbicacion" placeholder="Ciudad, País" autocomplete="street-address"/></div>
+<div><label for="clienteFecha">Fecha de Emisión</label><input type="text" id="clienteFecha" readonly/></div>
+<div><label for="clienteVencimiento">Fecha de Vencimiento</label><input type="text" id="clienteVencimiento" readonly/></div>
+</div>
+</div>
 
-  <div class="btn-group">
-    <button onclick="enviarFacturaCompleta()"><i class="fas fa-envelope"></i> Enviar</button>
-    <button onclick="limpiarFormulario()" class="secondary"><i class="fas fa-trash"></i> Limpiar</button>
-  </div>
+<div class="btn-group">
+<button onclick="KoowexaFactura.enviarFacturaCompleta()" aria-label="Enviar factura al cliente"><i class="fas fa-envelope"></i> Enviar</button>
+<button onclick="KoowexaFactura.limpiarFormulario()" class="secondary"><i class="fas fa-trash"></i> Limpiar</button>
+</div>
 </div>
 
 <script>
-  const KoowexaFactura = (function () {
-    const themeToggle = document.getElementById("themeToggle");
-    const alertBox = document.getElementById("alert");
+const KoowexaFactura=(function(){
+const themeToggle=document.getElementById("themeToggle"),alertBox=document.getElementById("alert"),descuentoSelect=document.getElementById("aplicarDescuento"),montoBaseInput=document.getElementById("montoBase"),montoFinalInput=document.getElementById("montoFinal");
+let firmaGenerada=null;
 
-    // Generar ID y número de factura
-    function generarId(min = 0, max = 9999) {
-      return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
+function generarId(min=0,max=9999){return Math.floor(Math.random()*(max-min+1))+min;}
+function generarNumFactura(){const f=new Date(),d=f.getDate().toString().padStart(2,'0'),m=(f.getMonth()+1).toString().padStart(2,'0'),a=f.getFullYear().toString().slice(-2),r=Math.floor(Math.random()*900+100);return`KWX-${a}${m}${d}-${r}`;}
+function generarFirmaUnica(){if(firmaGenerada)return firmaGenerada;const c=()=>Math.floor(16*Math.random()).toString(16),s=Array.from({length:32},c).join('');return firmaGenerada=s;}
+function formatearFecha(f){return f.toLocaleDateString('es-ES',{year:'numeric',month:'long',day:'numeric'});}
+function calcularVencimiento(){const h=new Date();h.setMonth(h.getMonth()+3);return h;}
+function validarCI(ci){return/^\d{6,}$/.test(ci.trim());}
+function validarCorreo(e){return/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);}
+function validarTelefono(t){return/^(\+\d{1,3}\s?)?\d{7,}$/.test(t.trim());}
+function mostrarAlerta(m,t="error"){alertBox.textContent=m;alertBox.style.display="block";alertBox.style.backgroundColor=t==="error"?"#e74c3c":"#27ae60";setTimeout(()=>alertBox.style.display="none",5000);}
+function toggleTheme(){const h=document.getElementById("html-root"),i=themeToggle.querySelector("i"),d=h.classList.contains("dark-mode");d?(h.classList.remove("dark-mode"),i.className="fas fa-moon",themeToggle.setAttribute("aria-label","Activar tema oscuro"),localStorage.setItem("theme","light")):(h.classList.add("dark-mode"),i.className="fas fa-sun",themeToggle.setAttribute("aria-label","Desactivar tema oscuro"),localStorage.setItem("theme","dark"));}
+function actualizarMontoFinal(){const b=parseFloat(montoBaseInput.value)||0,d=descuentoSelect.value==="si",f=d?b*0.9:b;montoFinalInput.value=`${f.toFixed(2)} CUP`;}
+function limpiarFormulario(){document.querySelectorAll("input[type=text],input[type=email],input[type=tel]").forEach(i=>{if(!i.hasAttribute("readonly"))i.value=""});descuentoSelect.value="no";servicioPago.value="Sí";firmaGenerada=null;inicializarFormulario();}
+function inicializarFormulario(){document.getElementById("empresaId").value=generarId();document.getElementById("numFactura").value=generarNumFactura();document.getElementById("firmaUnica").value=generarFirmaUnica();const h=new Date();document.getElementById("clienteFecha").value=formatearFecha(h);document.getElementById("clienteVencimiento").value=formatearFecha(calcularVencimiento());actualizarMontoFinal();if(localStorage.getItem("theme")==="dark"){document.getElementById("html-root").classList.add("dark-mode");themeToggle.querySelector("i").className="fas fa-sun";themeToggle.setAttribute("aria-label","Desactivar tema oscuro");}}
+function enviarFacturaCompleta(){const n=document.getElementById("clienteNombre").value.trim(),c=document.getElementById("clienteCI").value.trim(),t=document.getElementById("clienteTelefono").value.trim(),g=document.getElementById("clienteGmail").value.trim(),u=document.getElementById("clienteUbicacion").value.trim()||"No especificada";if(!n||!c||!t||!g){mostrarAlerta("⚠️ Todos los campos marcados con * son obligatorios.");return;}if(!validarCI(c)){mostrarAlerta("⚠️ El CI debe tener al menos 6 dígitos numéricos.");return;}if(!validarCorreo(g)){mostrarAlerta("⚠️ Introduce un correo válido.");return;}if(!validarTelefono(t)){mostrarAlerta("⚠️ Introduce un número de teléfono válido.");return;}const d={empresaId:document.getElementById("empresaId").value,numFactura:document.getElementById("numFactura").value,montoBase:montoBaseInput.value,montoFinal:montoFinalInput.value,descuento:descuentoSelect.value==="si"?"10%":"0%",servicioPago:document.getElementById("servicioPago").value,firma:document.getElementById("firmaUnica").value,nombre:n,ci:c,telefono:t,gmail:g,ubicacion:u,fecha:document.getElementById("clienteFecha").value,vencimiento:document.getElementById("clienteVencimiento").value},b=`
+Hola ${d.nombre},
 
-    function generarNumFactura() {
-      const fecha = new Date();
-      const dia = fecha.getDate().toString().padStart(2, '0');
-      const mes = (fecha.getMonth() + 1).toString().padStart(2, '0');
-      const anio = fecha.getFullYear().toString().slice(-2);
-      const rand = Math.floor(Math.random() * 900 + 100);
-      return `KWX-${anio}${mes}${dia}-${rand}`;
-    }
-
-    function formatearFecha(fecha) {
-      return fecha.toLocaleDateString('es-ES', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-      });
-    }
-
-    function calcularVencimiento() {
-      const hoy = new Date();
-      hoy.setMonth(hoy.getMonth() + 3);
-      return hoy;
-    }
-
-    function validarCI(ci) {
-      return /^\d{6,}$/.test(ci.trim());
-    }
-
-    function validarCorreo(email) {
-      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    }
-
-    function mostrarAlerta(mensaje, tipo = "error") {
-      alertBox.textContent = mensaje;
-      alertBox.style.display = "block";
-      alertBox.style.backgroundColor = tipo === "error" ? "#e74c3c" : "#27ae60";
-      setTimeout(() => {
-        alertBox.style.display = "none";
-      }, 5000);
-    }
-
-    function toggleTheme() {
-      const html = document.getElementById("html-root");
-      const icon = themeToggle.querySelector("i");
-      const isDark = html.classList.contains("dark-mode");
-      if (isDark) {
-        html.classList.remove("dark-mode");
-        icon.className = "fas fa-moon";
-        themeToggle.setAttribute("aria-label", "Activar tema oscuro");
-        localStorage.setItem("theme", "light");
-      } else {
-        html.classList.add("dark-mode");
-        icon.className = "fas fa-sun";
-        themeToggle.setAttribute("aria-label", "Desactivar tema oscuro");
-        localStorage.setItem("theme", "dark");
-      }
-    }
-
-    function limpiarFormulario() {
-      document.querySelectorAll("input[type=text], input[type=email], input[type=tel]").forEach(inp => {
-        if (!inp.hasAttribute("readonly")) inp.value = "";
-      });
-      document.getElementById("servicioPago").value = "Sí";
-      inicializarFormulario();
-    }
-
-    function inicializarFormulario() {
-      document.getElementById("empresaId").value = generarId();
-      document.getElementById("numFactura").value = generarNumFactura();
-      const hoy = new Date();
-      document.getElementById("clienteFecha").value = formatearFecha(hoy);
-      document.getElementById("clienteVencimiento").value = formatearFecha(calcularVencimiento());
-
-      // Aplicar tema guardado
-      if (localStorage.getItem("theme") === "dark") {
-        document.getElementById("html-root").classList.add("dark-mode");
-        themeToggle.querySelector("i").className = "fas fa-sun";
-        themeToggle.setAttribute("aria-label", "Desactivar tema oscuro");
-      }
-    }
-
-    function enviarFacturaCompleta() {
-      const nombre = document.getElementById("clienteNombre").value.trim();
-      const ci = document.getElementById("clienteCI").value.trim();
-      const telefono = document.getElementById("clienteTelefono").value.trim();
-      const gmail = document.getElementById("clienteGmail").value.trim();
-      const ubicacion = document.getElementById("clienteUbicacion").value.trim() || "No especificada";
-
-      if (!nombre || !ci || !telefono || !gmail) {
-        mostrarAlerta("⚠️ Todos los campos marcados con * son obligatorios.");
-        return;
-      }
-      if (!validarCI(ci)) {
-        mostrarAlerta("⚠️ El CI debe tener al menos 6 dígitos numéricos.");
-        return;
-      }
-      if (!validarCorreo(gmail)) {
-        mostrarAlerta("⚠️ Introduce un correo válido.");
-        return;
-      }
-
-      // Datos de la factura
-      const datos = {
-        empresaId: document.getElementById("empresaId").value,
-        numFactura: document.getElementById("numFactura").value,
-        monto: "2000 CUP",
-        servicioPago: document.getElementById("servicioPago").value,
-        nombre,
-        ci,
-        telefono,
-        gmail,
-        ubicacion,
-        fecha: document.getElementById("clienteFecha").value,
-        vencimiento: document.getElementById("clienteVencimiento").value
-      };
-
-      // Formatear cuerpo del correo
-      const cuerpo = `
-Hola ${datos.nombre},
-
-Aquí tienes los detalles de tu factura emitida por **KOOWEXA**:
-
-📄 **FACTURA ELECTRÓNICA**
+📄 **FACTURA ELECTRÓNICA - KOOWEXA**
 ------------------------------
-🔹 Número de Factura: ${datos.numFactura}
-🔹 ID de Empresa: ${datos.empresaId}
-🔹 Fecha de Emisión: ${datos.fecha}
-🔹 Fecha de Vencimiento: ${datos.vencimiento}
-🔹 Monto: ${datos.monto}
-🔹 Servicio de Pago: ${datos.servicioPago}
+🔹 Número: ${d.numFactura}
+🔹 ID Empresa: ${d.empresaId}
+🔹 Fecha Emisión: ${d.fecha}
+🔹 Vencimiento: ${d.vencimiento}
+🔹 Monto Base: ${d.montoBase} CUP
+🔹 Descuento Aplicado: ${d.descuento}
+🔹 Monto Final: ${d.montoFinal}
+🔹 Servicio de Pago: ${d.servicioPago}
+🔹 Firma Única: ${d.firma}
 
-👤 **Datos del Cliente**
+👤 **CLIENTE**
 ------------------------------
-🔹 Nombre: ${datos.nombre}
-🔹 CI: ${datos.ci}
-🔹 Teléfono: ${datos.telefono}
-🔹 Correo: ${datos.gmail}
-🔹 Ubicación: ${datos.ubicacion}
+🔹 Nombre: ${d.nombre}
+🔹 CI: ${d.ci}
+🔹 Teléfono: ${d.telefono}
+🔹 Correo: ${d.gmail}
+🔹 Ubicación: ${d.ubicacion}
 
-Gracias por confiar en KOOWEXA. No dudes en contactarnos si tienes alguna pregunta.
+✅ Esta factura incluye una firma única para validación.
+Gracias por confiar en KOOWEXA.
 
-Saludos cordiales,
+Saludos,
 Equipo KOOWEXA
-      `.trim();
-
-      const asunto = encodeURIComponent("Tu factura de KOOWEXA");
-      const body = encodeURIComponent(cuerpo);
-      const mailtoLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(datos.gmail)}&su=${asunto}&body=${body}`;
-
-      window.open(mailtoLink, "_blank");
-    }
-
-    // Inicializar al cargar
-    document.addEventListener("DOMContentLoaded", () => {
-      inicializarFormulario();
-      themeToggle.addEventListener("click", toggleTheme);
-    });
-
-    return { enviarFacturaCompleta, limpiarFormulario, mostrarAlerta };
-  })();
+`.trim(),s=encodeURIComponent("Tu factura de KOOWEXA"),body=encodeURIComponent(b),link=`mailto:${encodeURIComponent(d.gmail)}?subject=${s}&body=${body}`;window.open(link,"_blank");}
+descuentoSelect.addEventListener("change",actualizarMontoFinal);
+document.addEventListener("DOMContentLoaded",()=>{
+inicializarFormulario();
+themeToggle.addEventListener("click",toggleTheme);
+});
+return{enviarFacturaCompleta,limpiarFormulario,mostrarAlerta};
+})();
 </script>
 </body>
 </html>
