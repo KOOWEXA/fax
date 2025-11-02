@@ -3,483 +3,93 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>KOOWEXA - FAX</title>
-  <meta name="description" content="Facturación electrónica moderna y segura"/>
+  <title>KOOFAX</title>
+  <meta name="description" content="Sistema de facturación electrónica moderna, segura y eficiente"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="styles.css"/>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90' fill='%2327ae60'%3E🧾%3C/text%3E%3C/svg%3E"/>
-  <style>
-    :root {
-      --bg: #ffffff;
-      --bg-card: #ffffff;
-      --bg-alt: #f8f9fa;
-      --text: #2c3e50;
-      --text-muted: #7f8c8d;
-      --primary: #27ae60;
-      --primary-hover: #219653;
-      --danger: #e74c3c;
-      --border: #e0e0e0;
-      --shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-      --radius: 12px;
-      --transition: all 0.2s ease;
-      --font: 'Inter', sans-serif;
-      --success: #2ecc71;
-      --warning: #f39c12;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: var(--font);
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      transition: background-color 0.3s, color 0.3s;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .container {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 20px;
-      flex: 1;
-    }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 0;
-      border-bottom: 1px solid var(--border);
-      margin-bottom: 30px;
-    }
-
-    header h1 {
-      font-size: 24px;
-      font-weight: 700;
-      color: var(--primary);
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    header h1 i {
-      font-size: 26px;
-      background: rgba(39, 174, 96, 0.1);
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .stepper {
-      display: flex;
-      counter-reset: step;
-      gap: 10px;
-      list-style: none;
-      margin-bottom: 30px;
-      position: relative;
-    }
-
-    .stepper::before {
-      content: '';
-      position: absolute;
-      top: 24px;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: var(--border);
-      z-index: 1;
-    }
-
-    .stepper li {
-      flex: 1;
-      min-width: 200px;
-      padding: 16px;
-      text-align: center;
-      border-radius: var(--radius);
-      background: var(--bg-alt);
-      color: var(--text-muted);
-      font-weight: 500;
-      position: relative;
-      transition: var(--transition);
-      z-index: 2;
-    }
-
-    .stepper li::before {
-      counter-increment: step;
-      content: counter(step);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: #bdc3c7;
-      color: white;
-      margin: 0 auto 8px;
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    .stepper li.active {
-      background: var(--primary);
-      color: white;
-      font-weight: 600;
-    }
-
-    .stepper li.active::before {
-      background: var(--primary-hover);
-    }
-
-    .stepper li.done {
-      background: var(--success);
-      color: white;
-    }
-
-    .stepper li.done::before {
-      background: #27ae60;
-    }
-
-    .card {
-      background: var(--bg-card);
-      padding: 24px;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      border: 1px solid var(--border);
-      margin-bottom: 24px;
-      animation: fadeIn 0.4s ease;
-    }
-
-    .card h2 {
-      font-size: 18px;
-      font-weight: 600;
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--primary);
-      border-bottom: 2px solid #e0f7f0;
-      padding-bottom: 8px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 16px;
-    }
-
-    label {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--text);
-      margin-bottom: 6px;
-      display: block;
-    }
-
-    input, select {
-      width: 100%;
-      padding: 12px 14px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      background: var(--bg);
-      color: var(--text);
-      font-size: 15px;
-      transition: var(--transition);
-    }
-
-    input:focus, select:focus {
-      outline: none;
-      border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(39, 174, 96, 0.1);
-    }
-
-    button {
-      padding: 12px 20px;
-      border: none;
-      border-radius: 8px;
-      font-size: 15px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: var(--transition);
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      min-width: 120px;
-      justify-content: center;
-    }
-
-    button.primary {
-      background: var(--primary);
-      color: white;
-      box-shadow: 0 4px 6px rgba(39, 174, 96, 0.2);
-    }
-
-    button.primary:hover {
-      background: var(--primary-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 8px rgba(39, 174, 96, 0.3);
-    }
-
-    button.secondary {
-      background: #95a5a6;
-      color: white;
-    }
-
-    button.secondary:hover {
-      background: #7f8c8d;
-      transform: translateY(-1px);
-    }
-
-    button.danger {
-      background: var(--danger);
-      color: white;
-    }
-
-    button.danger:hover {
-      background: #c0392b;
-      transform: scale(0.98);
-    }
-
-    .btn-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      margin-top: 24px;
-      justify-content: flex-end;
-    }
-
-    .step {
-      display: none;
-      animation: fadeIn 0.3s ease;
-    }
-
-    .step.active {
-      display: block;
-    }
-
-    .alert {
-      padding: 16px;
-      border-radius: 8px;
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 15px;
-      opacity: 0;
-      transition: opacity 0.3s;
-      border-left: 4px solid transparent;
-    }
-
-    .alert.show {
-      opacity: 1;
-    }
-
-    .alert.success {
-      background: #d4edda;
-      color: #155724;
-      border-left-color: var(--success);
-    }
-
-    .alert.error {
-      background: #f8d7da;
-      color: #721c24;
-      border-left-color: var(--danger);
-    }
-
-    .alert.warning {
-      background: #fff3cd;
-      color: #856404;
-      border-left-color: var(--warning);
-    }
-
-    .alert i {
-      font-size: 18px;
-    }
-
-    .resumen-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 16px;
-    }
-
-    .resumen-table th {
-      background: #f1f5f9;
-      text-align: left;
-      padding: 12px;
-      font-size: 14px;
-      color: #6b7280;
-      font-weight: 600;
-    }
-
-    .resumen-table td {
-      padding: 12px;
-      border-bottom: 1px solid var(--border);
-      font-size: 14px;
-    }
-
-    .resumen-table tr:last-child td {
-      border-bottom: none;
-    }
-
-    .resumen-table tr:hover {
-      background: #f8f9fa;
-    }
-
-    .actions {
-      display: flex;
-      gap: 8px;
-    }
-
-    .actions button {
-      padding: 8px 12px;
-      font-size: 13px;
-      min-width: auto;
-      border-radius: 6px;
-    }
-
-    .facturas-section {
-      margin-top: 30px;
-    }
-
-    .empty-state {
-      text-align: center;
-      padding: 40px;
-      color: #6b7280;
-      font-size: 14px;
-    }
-
-    .empty-state i {
-      font-size: 48px;
-      margin-bottom: 16px;
-      color: #b0bec5;
-    }
-
-    @media (max-width: 600px) {
-      .container { padding: 12px; }
-      header h1 { font-size: 20px; }
-      .stepper { gap: 8px; }
-      .stepper li { min-width: auto; font-size: 14px; padding: 12px; }
-      .card { padding: 18px; }
-      .btn-group { 
-        justify-content: center; 
-        flex-direction: column;
-      }
-      .btn-group button {
-        width: 100%;
-        justify-content: center;
-      }
-      input, select { font-size: 16px; }
-      .stepper::before {
-        display: none;
-      }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
-    }
-
-    .pulse {
-      animation: pulse 2s infinite;
-    }
-
-    .suggestions {
-      position: absolute;
-      background: white;
-      border: 1px solid var(--border);
-      border-top: none;
-      border-radius: 0 0 8px 8px;
-      z-index: 100;
-      width: 100%;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
-    
-    .suggestion-item {
-      padding: 10px 14px;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    
-    .suggestion-item:hover {
-      background: var(--bg-alt);
-    }
-    
-    .suggestion-item.selected {
-      background: var(--primary);
-      color: white;
-    }
-    
-    .error-field {
-      border-color: var(--danger) !important;
-      box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1) !important;
-    }
-    
-    .valid-field {
-      border-color: var(--success) !important;
-      box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.1) !important;
-    }
-  </style>
 </head>
 <body>
   <div class="container">
     <header>
-      <h1><i class="fas fa-receipt"></i> KOOWEXA - FAX</h1>
+      <div class="brand">
+        <div class="logo">
+          <i class="fas fa-receipt"></i>
+        </div>
+        <div class="brand-text">
+          <h1>KOOWEXA</h1>
+          <p class="tagline">Facturación Electrónica Premium</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button class="btn-icon" id="themeToggle" title="Cambiar tema">
+          <i class="fas fa-moon"></i>
+        </button>
+      </div>
     </header>
 
-    <ul class="stepper">
-      <li id="step1Label" class="active">Empresa</li>
-      <li id="step2Label">Cliente</li>
-      <li id="step3Label">Confirmar</li>
-    </ul>
+    <div class="stepper-container">
+      <ul class="stepper">
+        <li id="step1Label" class="active">
+          <div class="step-icon">
+            <i class="fas fa-building"></i>
+          </div>
+          <span>Empresa</span>
+        </li>
+        <li id="step2Label">
+          <div class="step-icon">
+            <i class="fas fa-user"></i>
+          </div>
+          <span>Cliente</span>
+        </li>
+        <li id="step3Label">
+          <div class="step-icon">
+            <i class="fas fa-check-circle"></i>
+          </div>
+          <span>Confirmar</span>
+        </li>
+      </ul>
+    </div>
 
     <div id="alert" class="alert" role="alert" aria-live="polite"></div>
 
     <div id="step1" class="step active">
       <div class="card">
-        <h2><i class="fas fa-building"></i> Información de la Empresa</h2>
+        <div class="card-header">
+          <h2><i class="fas fa-building"></i> Información de la Empresa</h2>
+          <p class="card-description">Configura los detalles de la factura</p>
+        </div>
         <div class="grid">
-          <div>
-            <label>Monto Base (CUP)</label>
+          <div class="form-group">
+            <label for="montoBase">Monto Base (CUP)</label>
             <input type="number" id="montoBase" value="2000" step="0.01" min="1" required/>
+            <p class="field-hint">Ingrese el monto base de la factura</p>
           </div>
-          <div>
-            <label>Aplicar Descuento 10%</label>
+          <div class="form-group">
+            <label for="aplicarDescuento">Aplicar Descuento 10%</label>
             <select id="aplicarDescuento">
               <option value="no">No</option>
               <option value="si">Sí</option>
             </select>
           </div>
-          <div>
-            <label>Monto Final (CUP)</label>
-            <input type="text" id="montoFinal" readonly/>
+          <div class="form-group">
+            <label for="montoFinal">Monto Final (CUP)</label>
+            <input type="text" id="montoFinal" readonly class="result-field"/>
           </div>
-          <div>
-            <label>Tiempo de Expiración (meses)</label>
+          <div class="form-group">
+            <label for="mesesExpiracion">Tiempo de Expiración (meses)</label>
             <input type="number" id="mesesExpiracion" value="3" min="1" max="36" required/>
+            <p class="field-hint">Entre 1 y 36 meses</p>
           </div>
-          <div>
-            <label>Número de Factura</label>
-            <input type="text" id="numFactura" readonly placeholder="Auto-generado"/>
+          <div class="form-group">
+            <label for="numFactura">Número de Factura</label>
+            <input type="text" id="numFactura" readonly placeholder="Auto-generado" class="result-field"/>
           </div>
         </div>
       </div>
       <div class="btn-group">
-        <button onclick="KoowexaFactura.siguiente()" class="primary">
+        <button onclick="KoowexaFactura.siguiente()" class="btn btn-primary">
           <i class="fas fa-arrow-right"></i> Siguiente
         </button>
       </div>
@@ -487,28 +97,34 @@
 
     <div id="step2" class="step">
       <div class="card">
-        <h2><i class="fas fa-user"></i> Datos del Cliente</h2>
+        <div class="card-header">
+          <h2><i class="fas fa-user"></i> Datos del Cliente</h2>
+          <p class="card-description">Información del destinatario</p>
+        </div>
         <div class="grid">
-          <div class="relative">
-            <label for="clienteGmail">Correo *</label>
-            <input type="email" id="clienteGmail" placeholder="ejemplo@gmail.com" required autocomplete="email"/>
-            <div id="sugerenciasCorreo" class="suggestions" style="display: none;"></div>
+          <div class="form-group">
+            <label for="clienteGmail">Correo Electrónico *</label>
+            <div class="input-with-suggestions">
+              <input type="email" id="clienteGmail" placeholder="ejemplo@gmail.com" required autocomplete="email"/>
+              <div id="sugerenciasCorreo" class="suggestions" style="display: none;"></div>
+            </div>
+            <p class="field-hint">El cliente recibirá la factura en este correo</p>
           </div>
-          <div>
-            <label for="clienteFecha">Emisión</label>
-            <input type="text" id="clienteFecha" readonly/>
+          <div class="form-group">
+            <label for="clienteFecha">Fecha de Emisión</label>
+            <input type="text" id="clienteFecha" readonly class="result-field"/>
           </div>
-          <div>
-            <label for="clienteVencimiento">Vencimiento</label>
-            <input type="text" id="clienteVencimiento" readonly/>
+          <div class="form-group">
+            <label for="clienteVencimiento">Fecha de Vencimiento</label>
+            <input type="text" id="clienteVencimiento" readonly class="result-field"/>
           </div>
         </div>
       </div>
       <div class="btn-group">
-        <button onclick="KoowexaFactura.anterior()" class="secondary">
+        <button onclick="KoowexaFactura.anterior()" class="btn btn-secondary">
           <i class="fas fa-arrow-left"></i> Anterior
         </button>
-        <button onclick="KoowexaFactura.siguiente()" class="primary">
+        <button onclick="KoowexaFactura.siguiente()" class="btn btn-primary">
           Siguiente <i class="fas fa-arrow-right"></i>
         </button>
       </div>
@@ -516,355 +132,33 @@
 
     <div id="step3" class="step">
       <div class="card">
-        <h2><i class="fas fa-check-circle"></i> Revisa y Envía</h2>
-        <p>Confirma los datos antes de enviar la factura electrónica.</p>
-        <table class="resumen-table" id="resumenFactura"></table>
+        <div class="card-header">
+          <h2><i class="fas fa-check-circle"></i> Revisa y Envía</h2>
+          <p class="card-description">Confirma los datos antes de enviar la factura electrónica</p>
+        </div>
+        <div class="summary-container">
+          <table class="resumen-table" id="resumenFactura"></table>
+        </div>
       </div>
       <div class="btn-group">
-        <button onclick="KoowexaFactura.anterior()" class="secondary">
+        <button onclick="KoowexaFactura.anterior()" class="btn btn-secondary">
           <i class="fas fa-arrow-left"></i> Anterior
         </button>
-        <button onclick="KoowexaFactura.enviarFacturaCompleta()" class="primary">
+        <button onclick="KoowexaFactura.enviarFacturaCompleta()" class="btn btn-primary btn-large">
           <i class="fas fa-paper-plane"></i> Enviar Factura
         </button>
       </div>
     </div>
 
     <div class="card facturas-section">
-      <h2><i class="fas fa-history"></i> Facturas Enviadas</h2>
+      <div class="card-header">
+        <h2><i class="fas fa-history"></i> Historial de Facturas</h2>
+        <p class="card-description">Facturas enviadas recientemente</p>
+      </div>
       <div id="facturasEnviadas"></div>
     </div>
   </div>
 
-  <script>
-    const KoowexaFactura = (() => {
-      const $ = (sel) => document.querySelector(sel);
-      const steps = ['step1', 'step2', 'step3'];
-      let currentStep = 0;
-      const alertBox = $('#alert');
-      const montoBase = $('#montoBase');
-      const aplicarDescuento = $('#aplicarDescuento');
-      const montoFinal = $('#montoFinal');
-      const mesesExpiracion = $('#mesesExpiracion');
-      const numFactura = $('#numFactura');
-      const fechaEmision = $('#clienteFecha');
-      const fechaVencimiento = $('#clienteVencimiento');
-      const clienteGmail = $('#clienteGmail');
-      const sugerenciasCorreo = $('#sugerenciasCorreo');
-      const STORAGE_KEY = 'koowexa_facturas_v3';
-      let facturasEnviadas = [];
-
-      const formatearFecha = (date) => {
-        return new Intl.DateTimeFormat('es-ES', {
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric'
-        }).format(date);
-      };
-
-      const generarNumFactura = () => {
-        const d = String(new Date().getDate()).padStart(2, '0');
-        const m = String(new Date().getMonth() + 1).padStart(2, '0');
-        const a = new Date().getFullYear().toString().slice(-2);
-        const r = Math.floor(Math.random() * 900 + 100);
-        return `KWX-${a}${m}${d}-${r}`;
-      };
-
-      const calcularVencimiento = (meses) => {
-        const hoy = new Date();
-        hoy.setMonth(hoy.getMonth() + meses);
-        return hoy;
-      };
-
-      const validarEmail = (email) => {
-        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return re.test(email.trim());
-      };
-
-      const sugerirDominio = (email) => {
-        const dominios = ['gmail.com', 'hotmail.com', 'outlook.com', 'yahoo.com'];
-        const base = email.split('@')[0];
-        if (email.includes('@')) return [];
-        return dominios.map(d => `${base}@${d}`);
-      };
-
-      const mostrarAlerta = (mensaje, tipo = 'error') => {
-        alertBox.innerHTML = `<i class="fas fa-${tipo === 'error' ? 'exclamation-circle' : tipo === 'success' ? 'check-circle' : 'exclamation-triangle'}"></i> ${mensaje}`;
-        alertBox.className = `alert ${tipo}`;
-        alertBox.classList.add('show');
-        setTimeout(() => alertBox.classList.remove('show'), 5000);
-      };
-
-      const actualizarMontoFinal = () => {
-        const base = parseFloat(montoBase.value) || 0;
-        const descuento = aplicarDescuento.value === 'si' ? 0.1 : 0;
-        const final = base * (1 - descuento);
-        montoFinal.value = new Intl.NumberFormat('es-CU', {
-          style: 'currency',
-          currency: 'CUP'
-        }).format(final);
-      };
-
-      const actualizarFechas = () => {
-        const meses = parseInt(mesesExpiracion.value) || 3;
-        const hoy = new Date();
-        const venc = calcularVencimiento(meses);
-        fechaEmision.value = formatearFecha(hoy);
-        fechaVencimiento.value = formatearFecha(venc);
-      };
-
-      const siguiente = () => {
-        if (currentStep === 1 && !validarCliente()) return;
-        currentStep++;
-        actualizarVistas();
-      };
-
-      const anterior = () => {
-        currentStep--;
-        actualizarVistas();
-      };
-
-      const actualizarVistas = () => {
-        steps.forEach((id, i) => {
-          const el = $(`#${id}`);
-          const label = $(`#${id}Label`);
-          el.classList.toggle('active', i === currentStep);
-          label.classList.toggle('active', i === currentStep);
-          label.classList.toggle('done', i < currentStep);
-        });
-        if (currentStep === 2) resumenFactura();
-      };
-
-      const validarCliente = () => {
-        const email = $('#clienteGmail').value.trim();
-        $('#clienteGmail').classList.remove('error-field', 'valid-field');
-        if (!email || !validarEmail(email)) {
-          $('#clienteGmail').classList.add('error-field');
-          mostrarAlerta('⚠️ Correo no válido.');
-          return false;
-        } else {
-          $('#clienteGmail').classList.add('valid-field');
-        }
-        return true;
-      };
-
-      const inicializarFormulario = () => {
-        numFactura.value = generarNumFactura();
-        actualizarMontoFinal();
-        actualizarFechas();
-        cargarFacturasEnviadas();
-      };
-
-      const cargarFacturasEnviadas = () => {
-        const saved = localStorage.getItem(STORAGE_KEY);
-        if (saved) {
-          try {
-            facturasEnviadas = JSON.parse(saved);
-            renderizarFacturas();
-          } catch (e) {
-            facturasEnviadas = [];
-          }
-        }
-      };
-
-      const renderizarFacturas = () => {
-        const cont = $('#facturasEnviadas');
-        if (facturasEnviadas.length === 0) {
-          cont.innerHTML = `
-            <div class="empty-state">
-              <i class="fas fa-file-invoice-dollar"></i>
-              <p>No hay facturas enviadas aún.</p>
-              <p class="pulse">¡Crea tu primera factura hoy!</p>
-            </div>`;
-          return;
-        }
-
-        const tablaHTML = `
-          <table class="resumen-table">
-            <thead>
-              <tr>
-                <th>Factura</th>
-                <th>Correo</th>
-                <th>Vence</th>
-                <th>Acciones</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${facturasEnviadas.map((f, i) => `
-                <tr>
-                  <td><strong>${f.numFactura}</strong></td>
-                  <td>${f.gmail}</td>
-                  <td>${f.vencimiento}</td>
-                  <td class="actions">
-                    <button data-action="notify" data-index="${i}" title="Notificar"><i class="fas fa-bell"></i></button>
-                    <button data-action="delete" data-index="${i}" title="Eliminar" class="danger"><i class="fas fa-trash"></i></button>
-                  </td>
-                </tr>
-              `).join('')}
-            </tbody>
-          </table>`;
-
-        cont.innerHTML = tablaHTML;
-        cont.addEventListener('click', (e) => {
-          const btn = e.target.closest('button');
-          if (!btn) return;
-          const action = btn.dataset.action;
-          const index = parseInt(btn.dataset.index);
-          if (action === 'delete') eliminarFactura(index);
-          if (action === 'notify') notificarVencimiento(index);
-        });
-      };
-
-      const guardarFacturaEnviada = (datos) => {
-        facturasEnviadas.push({ ...datos, timestamp: new Date().toISOString() });
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(facturasEnviadas));
-        renderizarFacturas();
-      };
-
-      const eliminarFactura = (index) => {
-        facturasEnviadas.splice(index, 1);
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(facturasEnviadas));
-        renderizarFacturas();
-        mostrarAlerta('🗑️ Factura eliminada.', 'success');
-      };
-
-      const resumenFactura = () => {
-        const gmail = $('#clienteGmail').value;
-        $('#resumenFactura').innerHTML = `
-          <tr><td><strong>Factura</strong></td><td>${numFactura.value}</td></tr>
-          <tr><td><strong>Correo</strong></td><td>${gmail}</td></tr>
-          <tr><td><strong>Total</strong></td><td><strong style="color:#27ae60;">${montoFinal.value}</strong></td></tr>
-          <tr><td><strong>Vence</strong></td><td>${fechaVencimiento.value}</td></tr>
-        `;
-      };
-
-      const enviarFacturaCompleta = () => {
-        if (!validarCliente()) return;
-        const datos = {
-          numFactura: numFactura.value,
-          montoBase: montoBase.value,
-          montoFinal: montoFinal.value,
-          descuento: aplicarDescuento.value === 'si' ? '10%' : '0%',
-          gmail: $('#clienteGmail').value.trim(),
-          fecha: fechaEmision.value,
-          vencimiento: fechaVencimiento.value
-        };
-        const cuerpo = `
-Hola,
-
-🧾 **FACTURA ELECTRÓNICA - KOOWEXA**
-------------------------------
-🔹 Número: ${datos.numFactura}
-🔹 Fecha Emisión: ${datos.fecha}
-🔹 Vence: ${datos.vencimiento}
-🔹 Monto Base: ${datos.montoBase} CUP
-🔹 Descuento: ${datos.descuento}
-🔹 Total: ${datos.montoFinal}
-
-Gracias por confiar en KOOWEXA.
-¡Saludos!
-
-Equipo KOOWEXA
-        `.trim();
-        const subject = encodeURIComponent(`Factura KOOWEXA - ${datos.numFactura}`);
-        const body = encodeURIComponent(cuerpo);
-        const mailto = `mailto:${encodeURIComponent(datos.gmail)}?subject=${subject}&body=${body}`;
-        window.open(mailto, '_blank', 'noopener,noreferrer');
-        guardarFacturaEnviada(datos);
-        mostrarAlerta('✅ Factura enviada y guardada.', 'success');
-        setTimeout(() => {
-          limpiarFormulario();
-          actualizarVistas();
-        }, 1000);
-      };
-
-      const limpiarFormulario = () => {
-        montoBase.value = '2000';
-        mesesExpiracion.value = '3';
-        aplicarDescuento.value = 'no';
-        $('#clienteGmail').value = '';
-        $('#clienteGmail').classList.remove('error-field', 'valid-field');
-        inicializarFormulario();
-      };
-
-      const notificarVencimiento = (index) => {
-        const factura = facturasEnviadas[index];
-        if (!("Notification" in window)) {
-          mostrarAlerta("🔔 Notificaciones no soportadas.");
-          return;
-        }
-        Notification.requestPermission().then(perm => {
-          if (perm === 'granted') {
-            const venc = new Date(factura.vencimiento);
-            const ahora = new Date();
-            if (venc <= ahora) {
-              new Notification("Vencida", { body: `La factura ${factura.numFactura} ha vencido.` });
-            } else {
-              const diff = venc - ahora;
-              setTimeout(() => {
-                new Notification("Próximo vencimiento", { body: `La factura ${factura.numFactura} vence hoy.` });
-              }, diff);
-            }
-          }
-        });
-      };
-
-      montoBase.addEventListener('input', actualizarMontoFinal);
-      aplicarDescuento.addEventListener('change', actualizarMontoFinal);
-      mesesExpiracion.addEventListener('input', actualizarFechas);
-      clienteGmail.addEventListener('input', function() {
-        const valor = this.value.trim();
-        const sugerencias = sugerirDominio(valor);
-        if (sugerencias.length > 0) {
-          sugerenciasCorreo.innerHTML = '';
-          sugerencias.forEach(sug => {
-            const item = document.createElement('div');
-            item.className = 'suggestion-item';
-            item.textContent = sug;
-            item.addEventListener('click', () => {
-              clienteGmail.value = sug;
-              sugerenciasCorreo.style.display = 'none';
-              if (validarEmail(sug)) {
-                clienteGmail.classList.add('valid-field');
-                clienteGmail.classList.remove('error-field');
-              }
-            });
-            sugerenciasCorreo.appendChild(item);
-          });
-          sugerenciasCorreo.style.display = 'block';
-        } else {
-          sugerenciasCorreo.style.display = 'none';
-        }
-      });
-      document.addEventListener('click', (e) => {
-        if (!clienteGmail.contains(e.target) && !sugerenciasCorreo.contains(e.target)) {
-          sugerenciasCorreo.style.display = 'none';
-        }
-      });
-      $('#clienteGmail').addEventListener('input', function() {
-        if (validarEmail(this.value)) {
-          this.classList.add('valid-field');
-          this.classList.remove('error-field');
-          sugerenciasCorreo.style.display = 'none';
-        } else {
-          this.classList.remove('valid-field');
-          this.classList.remove('error-field');
-        }
-      });
-      document.addEventListener('DOMContentLoaded', () => {
-        inicializarFormulario();
-        actualizarVistas();
-      });
-      return {
-        siguiente,
-        anterior,
-        enviarFacturaCompleta,
-        eliminarFactura,
-        notificarVencimiento,
-        mostrarAlerta,
-        limpiarFormulario
-      };
-    })();
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
